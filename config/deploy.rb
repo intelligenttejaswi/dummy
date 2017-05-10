@@ -36,12 +36,11 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public"
 # Default value for keep_releases is 5
 set :keep_releases, 5
 
-after 'deploy:publishing', 'deploy:restart'
+after 'deploy:publishing', 'deploy:unicorn_restart'
 namespace :deploy do
-  task :restart do
+  task :unicorn_restart do
     invoke 'unicorn:restart'
   end
 end
 
 set :unicorn_config_path, "#{fetch :deploy_to}/current/config/unicorn.rb"
-# set :unicorn_options, "-E #{fetch :stage} -D"
