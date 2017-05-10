@@ -33,7 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 gem 'capistrano-bundler', '~> 1.2'
 gem 'capistrano-rails', group: :development
-gem 'capistrano3-unicorn'
+gem 'capistrano-unicorn', :require => false
 gem "unicorn", :platform => :ruby
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -44,3 +44,4 @@ namespace :deploy do
 end
 
 set :unicorn_config_path, "#{fetch :deploy_to}/current/config/unicorn.rb"
+set :unicorn_env, "#{fetch :stage}"
