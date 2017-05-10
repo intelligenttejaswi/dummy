@@ -1,8 +1,12 @@
 # config valid only for current version of Capistrano
 lock "3.8.1"
 
-set :application, "my_app_name"
-set :repo_url, "git@example.com:me/my_repo.git"
+set :application, "dummy"
+set :repo_url, "git@github.com:intelligenttejaswi/dummy.git"
+set :deploy_user, "tejaswi"
+set :stages, ["beta", "production","development"]
+set :default_stage, "development"
+set :deploy_to, "/home/#{fetch :deploy_user }/apps/#{fetch :application}/#{fetch :stage}" 
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
