@@ -39,9 +39,6 @@ set :keep_releases, 5
 after 'deploy:publishing', 'deploy:unicorn_restart'
 namespace :deploy do
   task :unicorn_restart do
-    invoke 'unicorn:restart'
+    #invoke 'unicorn:restart'
   end
 end
-
-set :unicorn_config_path, "#{fetch :deploy_to}/current/config/unicorn.rb"
-set :unicorn_env, "#{fetch :stage}"
