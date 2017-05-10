@@ -36,8 +36,4 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public"
 # Default value for keep_releases is 5
 set :keep_releases, 5
 
-namespace :deploy do
-  task :restart_unicorn, :roles => :app do
-    sudo "monit restart all -g daemons"
-  end
-end
+
