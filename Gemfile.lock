@@ -57,8 +57,6 @@ GEM
     capistrano-rails (1.1.8)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
-    capistrano-unicorn (0.1.10)
-      capistrano
     capybara (2.13.0)
       addressable
       mime-types (>= 1.16)
@@ -201,7 +199,6 @@ DEPENDENCIES
   byebug
   capistrano-bundler (~> 1.2)
   capistrano-rails
-  capistrano-unicorn
   capybara (~> 2.13.0)
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
