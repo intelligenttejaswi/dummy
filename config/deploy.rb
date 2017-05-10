@@ -28,10 +28,16 @@ set :deploy_to, "/home/#{fetch :deploy_user }/apps/#{fetch :application}/#{fetch
 # append :linked_files, "config/database.yml", "config/secrets.yml"
 
 # Default value for linked_dirs is []
-# append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public"
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for keep_releases is 5
-# set :keep_releases, 5
+set :keep_releases, 5
+
+namespace :deploy do
+  task :restart_unicorn, :roles => :app do
+    sudo "monit restart all -g daemons"
+  end
+end
