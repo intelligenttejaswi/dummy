@@ -7,9 +7,7 @@ set :deploy_user, "tejaswi"
 set :stages, ["beta", "production","development"]
 set :default_stage, "development"
 set :deploy_to, "/home/#{fetch :deploy_user }/apps/#{fetch :application}/#{fetch :stage}" 
-set :default_env, {
-  'RAILS_ENV' => "#{fetch :stage}"
-}
+
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -42,6 +40,7 @@ set :keep_releases, 5
 after 'deploy:publishing', 'deploy:unicorn_restart'
 namespace :deploy do
   task :unicorn_restart do
+    set :unicorn_config_path, "config/unicorn.rb"
     invoke 'unicorn:restart'
   end
 end
