@@ -40,7 +40,7 @@ set :keep_releases, 5
 after 'deploy:publishing', 'deploy:unicorn_restart'
 namespace :deploy do
   task :unicorn_restart do
-    set :unicorn_config_path, "config/unicorn.rb"
+    set :unicorn_config_path, "#{fetch :deploy_to}/current/config/unicorn.rb"
     invoke 'unicorn:restart'
   end
 end
