@@ -39,6 +39,8 @@ set :keep_releases, 5
 after 'deploy:publishing', 'deploy:unicorn_restart'
 namespace :deploy do
   task :unicorn_restart do
-    #invoke 'unicorn:restart'
+    invoke 'unicorn:restart'
   end
 end
+
+set :unicorn_rack_env, "#{fetch :stage}"

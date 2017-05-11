@@ -9,7 +9,7 @@ server "dummy-dev1", user: "#{fetch :deploy_user}" , roles: %w{app db web}
 
 ask :branch, "master"
 set :deploy_to, "/home/#{fetch :deploy_user }/apps/#{fetch :application}/#{fetch :branch}"
-set :unicorn_config_path, "#{fetch :deploy_to}/current/config/unicorn.rb"
+
 
 # role-based syntax
 # ==================
