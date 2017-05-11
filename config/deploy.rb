@@ -52,3 +52,4 @@ set :unicorn_rack_env, "#{fetch :stage}"
 set :app_server, true
 set :nginx_sudo_paths, [:nginx_sites_enabled_dir, :nginx_sites_available_dir]
 set :nginx_static_dir, "public"
+set :nginx_application_name, "#{fetch :branch}.#{fetch :application}"

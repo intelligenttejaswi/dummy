@@ -11,6 +11,7 @@ set :branch, "beta"
 set :nginx_domains, "#{fetch :application} www.#{fetch :application}"
 set :deploy_to, "/home/#{fetch :deploy_user }/apps/#{fetch :application}/#{fetch :stage}" 
 set :app_server_socket, "#{shared_path}/tmp/sockets/unicorn.sock"
+set :nginx_application_name, "#{fetch :application}-#{fetch :stage}"
 
 # role-based syntax
 # ==================

@@ -9,9 +9,9 @@ server "dummy-dev1", user: "#{fetch :deploy_user}" , roles: %w{app db web}
 
 ask :branch, "master"
 set :deploy_to, "/home/#{fetch :deploy_user }/apps/#{fetch :application}/#{fetch :branch}"
-set :nginx_static_dir, "#{fetch :deploy_to}/current/public"
 set :nginx_domains, "#{fetch :branch}.#{fetch :application}"
 set :app_server_socket, "#{shared_path}/tmp/sockets/unicorn.sock"
+
 
 # role-based syntax
 # ==================
