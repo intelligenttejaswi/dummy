@@ -54,8 +54,6 @@ GEM
     capistrano-bundler (1.2.0)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
-    capistrano-ext (1.2.1)
-      capistrano (>= 1.0.0)
     capistrano-rails (1.1.8)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
@@ -202,7 +200,6 @@ PLATFORMS
 DEPENDENCIES
   byebug
   capistrano-bundler (~> 1.2)
-  capistrano-ext
   capistrano-rails
   capistrano3-unicorn
   capybara (~> 2.13.0)
