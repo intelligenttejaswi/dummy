@@ -42,7 +42,6 @@ namespace :deploy do
   task :restart do
     set :unicorn_config_path, "#{fetch :deploy_to}/current/config/unicorn.rb"
     invoke 'unicorn:restart'
-    run "sudo service nginx restart"
   end
 end
 
