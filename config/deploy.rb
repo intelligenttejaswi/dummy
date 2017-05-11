@@ -42,6 +42,8 @@ namespace :deploy do
   task :restart do
     set :unicorn_config_path, "#{fetch :deploy_to}/current/config/unicorn.rb"
     invoke 'unicorn:restart'
+    invoke 'nginx:site:add'
+    invoke 'nginx:site:enable'
     invoke 'nginx:restart'
   end
 end
@@ -53,3 +55,5 @@ set :app_server, true
 set :nginx_sudo_paths, [:nginx_sites_enabled_dir, :nginx_sites_available_dir]
 set :nginx_static_dir, "public"
 set :nginx_application_name, "#{fetch :branch}.#{fetch :application}"
+set :app_server_host, "#{fetch :branch}.#{fetch :application}"
+set :nginx_template, "#{stage_config_path}/templates/nginx/#{fetch :stage}.erb"
