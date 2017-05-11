@@ -29,19 +29,20 @@ set :deploy_to, "/home/#{fetch :deploy_user }/apps/#{fetch :application}/#{fetch
 # append :linked_files, "config/database.yml", "config/secrets.yml"
 
 # Default value for linked_dirs is []
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/assets"
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
-
+set :bundle_without, nil   
 # Default value for keep_releases is 5
 set :keep_releases, 5
 
-after 'deploy:publishing', 'deploy:unicorn_restart'
+after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
-  task :unicorn_restart do
+  task :restart do
     set :unicorn_config_path, "#{fetch :deploy_to}/current/config/unicorn.rb"
     invoke 'unicorn:restart'
+    sudo "service nginx restart"
   end
 end
 
