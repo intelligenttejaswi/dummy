@@ -1,12 +1,12 @@
 # config valid only for current version of Capistrano
 lock "3.8.1"
 
-set :application, "dummy"
+set :application, "dummy.com"
 set :repo_url, "git@github.com:intelligenttejaswi/dummy.git"
 set :deploy_user, "tejaswi"
 set :stages, ["beta", "production","development"]
 set :default_stage, "development"
-set :deploy_to, "/home/#{fetch :deploy_user }/apps/#{fetch :application}/#{fetch :stage}" 
+
 
 
 # Default branch is :master
@@ -42,7 +42,12 @@ namespace :deploy do
   task :restart do
     set :unicorn_config_path, "#{fetch :deploy_to}/current/config/unicorn.rb"
     invoke 'unicorn:restart'
+    invoke 'nginx:restart'
   end
 end
 
 set :unicorn_rack_env, "#{fetch :stage}"
+ 
+
+set :app_server, true
+set :nginx_sudo_paths, [:nginx_sites_enabled_dir, :nginx_sites_available_dir]

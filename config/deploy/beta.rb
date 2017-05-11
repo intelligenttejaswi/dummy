@@ -8,7 +8,10 @@ server "dummy-beta1", user: "#{fetch :deploy_user}" , roles: %w{app db web}
 # server "db.example.com", user: "deploy", roles: %w{db}
 
 set :branch, "beta"
-
+set :nginx_domains, "#{fetch :application} www.#{fetch :application}"
+set :deploy_to, "/home/#{fetch :deploy_user }/apps/#{fetch :application}/#{fetch :stage}" 
+set :nginx_static_dir, "#{fetch :deploy_to}/current/public"
+set :app_server_socket, "#{shared_path}/tmp/sockets/unicorn.sock"
 
 # role-based syntax
 # ==================
