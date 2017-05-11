@@ -20,7 +20,7 @@ pid "#{shared_dir}/tmp/pids/unicorn.pid"
 
 # use correct Gemfile on restarts
 before_exec do |server|
-  ENV['BUNDLE_GEMFILE'] = "#{app_path}/current/Gemfile"
+  ENV['BUNDLE_GEMFILE'] = "#{app_dir}/current/Gemfile"
 end
 
 # preload
