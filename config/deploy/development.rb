@@ -11,7 +11,6 @@ ask :branch, "master"
 set :deploy_to, "/home/#{fetch :deploy_user }/apps/#{fetch :application}/#{fetch :branch}"
 set :nginx_static_dir, "#{fetch :deploy_to}/current/public"
 set :nginx_domains, "#{fetch :branch}.#{fetch :application}"
-set :nginx_static_dir, "#{fetch :deploy_to}/current/public"
 set :app_server_socket, "#{shared_path}/tmp/sockets/unicorn.sock"
 
 # role-based syntax
